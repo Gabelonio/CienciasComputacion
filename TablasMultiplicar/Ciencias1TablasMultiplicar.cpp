@@ -27,7 +27,7 @@ int main(){
 			
 			a[j]=j*i;
 			cout<<a[j];
-			//Suma de cada índice en el arreglo a
+			//Suma de cada memoria en bytes por índice en el arreglo a
 			sumadorBytes+= sizeof(a[j]);
 		}
 		
