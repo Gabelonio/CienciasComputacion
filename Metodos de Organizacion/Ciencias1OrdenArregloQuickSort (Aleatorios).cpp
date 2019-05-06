@@ -6,6 +6,7 @@ Gabriel Esteban Castillo Ramirez
 */
 #include <windows.h>
 #include <iostream>
+#include <time.h>
 
 double PCFreq = 0.0;
 __int64 CounterStart = 0;
@@ -58,18 +59,40 @@ void OrdenRapido(int arreglo[], int izquierda, int derecha){
 }
 
 int main(){
-
-	int dimension,i;
 	
-	cout<<"Ingrese el tamano del arreglo: ";
+	srand(time(NULL));
+	int dimension,i,numeroAsignacion;
+	bool repeticionNumero = false;
+	
+	cout<<"ingrese la dimension del arreglo: ";
 	cin>>dimension;
 
 	int a[dimension]; 		  //Creacion del arreglo a ordenar
 
+	/*
+	*	Inicialización del arreglo
+	*/
+	for(int l=0; l<dimension; l++)
+		a[l] = 0;
+		
+	/*
+	*	Asignacion aleatoria y diferente de los numeros en el arreglo	
+	*/	
 	for(i=0;i<dimension;i++){
-		a[i] = dimension-i;	  //Llenado del arreglo de mayor a menor
+		while(true){
+			repeticionNumero = false;
+			numeroAsignacion = rand()% dimension+1;
+			for(int k=0;k<dimension;k++){
+				repeticionNumero = (repeticionNumero || numeroAsignacion==a[k]);
+			}
+			if(!repeticionNumero)
+				break;
+		}
+		a[i] = numeroAsignacion;
 	}
-
+	/*
+	*	 Realizacion del Quicksort y toma de tiempo
+	*/
 	correrContador();
 
 	OrdenRapido(a,0,dimension-1);   //ordenamiento por orden rapido
@@ -83,8 +106,7 @@ int main(){
 	for(i=0;i<dimension;i++){
 		cout<<a[i]<<" ";
 	}
-	cout<<endl;
-
+		cout<<endl;
 	system("pause");
 	return 0;
 }
