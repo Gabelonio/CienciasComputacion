@@ -1,6 +1,6 @@
 /*
 Programa para realizar la organizacion de un arreglo de enteros
-METODO MERGE
+METODO MERGE (a partir de ejercicio visto en Udin) 
 Gabriel Esteban Castillo Ramirez
 Esteban Quintero Amaya
 17-05-2019
