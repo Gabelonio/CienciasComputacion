@@ -5,10 +5,30 @@ Gabriel Esteban Castillo Ramirez
 Esteban Quintero Amaya
 17-05-2019
 */
+#include <windows.h>
 #include <iostream>
-#include <time.h>
+
+double PCFreq = 0.0;
+__int64 CounterStart = 0;
 
 using namespace std;
+
+void correrContador(){
+    LARGE_INTEGER li;
+    if(!QueryPerformanceFrequency(&li))
+    cout << "QueryPerformanceFrequency fallo!\n";
+
+    PCFreq = double(li.QuadPart)/1000.0; 	//Obtencion de microsegundos
+
+    QueryPerformanceCounter(&li);
+    CounterStart = li.QuadPart;
+}
+
+double obtenerContador(){
+    LARGE_INTEGER li;
+    QueryPerformanceCounter(&li);
+    return double(li.QuadPart-CounterStart)/PCFreq;
+}
 
 void MergeListas(int arreglo[], int inicioUno, int finUno, int inicioDos, int finDos){
 
@@ -50,6 +70,7 @@ void MergeListas(int arreglo[], int inicioUno, int finUno, int inicioDos, int fi
 	}
 
 }
+
 void Merge(int arreglo[], int primero, int ultimo){
 
 	int mitad;
@@ -62,8 +83,9 @@ void Merge(int arreglo[], int primero, int ultimo){
 	}
 }
 
-int main(){
 
+int main(){
+	
 	int dimension,i;
 
 	cin>>dimension;
@@ -74,8 +96,11 @@ int main(){
 		a[i] = dimension-i;	  //Llenado del arreglo de mayor a menor
 	}
 
+	correrContador();
+	
 	Merge(a,0,dimension-1);   //ordenamiento por seleccion
 
+	cout<<endl<<endl<<"Tiempo en milisegundos: "<<obtenerContador()<<endl;	
 	/*
 	*	Impresion del arreglo
 	*/
