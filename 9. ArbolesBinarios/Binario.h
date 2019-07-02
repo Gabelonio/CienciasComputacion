@@ -157,6 +157,7 @@ void Binario::eliminar(int dato){
 			if(buscador.info != dato && buscador.der == 0 && buscador.izq == 0) {
 				romp = true;
 				cout<<"El elemento a buscar no se ha encontrado"<<endl;
+				return; 
 			}
 			else if(buscador.info < dato ){ 
 				padre = pos; 

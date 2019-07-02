@@ -7,7 +7,7 @@
 			Gabriel Esteban Castillo Ramírez - 20171020021
 			Esteban Quintero Amaya -20171020022
 */
- 
+   
 int main(int argc, char** argv) { 
 	int tam;
 	

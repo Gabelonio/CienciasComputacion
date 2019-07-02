@@ -49,6 +49,8 @@ int main()
         default:
             cout<<"\nOpcion Incorrecta"<<endl;
         }
+        system("pause");
+        system("cls");
     }
     return 0;
 }
