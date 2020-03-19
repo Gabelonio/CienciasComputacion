@@ -1,2 +1,2 @@
-# CienciasComputacion
-<h2>Repositorio de las tematicas y proyectos realizados en ciencias de la computacion UD</h2>
+# Computer Science
+<h2>Repository made for the topics and projects in the Computer Science subject UD</h2>
